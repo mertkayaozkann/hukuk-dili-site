@@ -3,6 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- ── Güvenlik başlıkları · güvenlik turu adım 9 (2026-08-19) ──────────────
+       BARINDIRICI GERÇEĞİ: GitHub Pages özel yanıt başlığı eklemeye izin
+       vermez (`_headers`/`.htaccess` desteklenmez). Ölçüldü: yanıtta yalnız
+       `strict-transport-security` var, diğer beş başlık YOK. Bu yüzden CSP
+       ve referrer politikası HTML içinden veriliyor.
+
+       ⚠️ RAPOR MODU BU BARINDIRICIDA MÜMKÜN DEĞİL: `Content-Security-Policy-
+       Report-Only` yalnız HTTP BAŞLIĞI olarak geçerlidir, `<meta>` ile
+       verilemez. Onun yerine güvenlik ENUMERASYONLA sağlandı: bu sitelerde
+       0 `<script>`, 0 `<img>`, 0 `<iframe>`, 0 `<style>` bloğu, 0 dış yazı
+       tipi, CSS'te 0 `url()`/`@import` var; tek kaynak aynı köken
+       `style.css`. Satır içi `style="..."` kullanımları da CSS sınıflarına
+       taşındı, böylece `'unsafe-inline'` GEREKMİYOR. Politika tarayıcıda
+       ayrıca yürütülüp konsol ihlali olmadığı doğrulandı.
+
+       ⚠️ `frame-ancestors` <meta> ile verildiğinde tarayıcılar tarafından
+       YOK SAYILIR; `X-Frame-Options` da <meta> ile verilemez. Yani tıklama
+       hırsızlığı koruması bu barındırıcıda EKSİK KALIYOR (dürüstlük kaydı).
+       Hazır çözüm: depo kökündeki `_headers` dosyası — başlık destekleyen
+       bir barındırıcıya (Cloudflare/Netlify) geçildiği gün devreye girer.
+  -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' data:; font-src 'self'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>Gizlilik Politikası — Hukuk Dili</title>
   <meta name="description" content="Hukuk Dili hiçbir kişisel veri toplamaz. İçerik çevrimdışıdır; tek ağ etkinliği Apple App Store'un abonelik işlemleridir. KVKK bilgilendirmesi.">
   <link rel="stylesheet" href="style.css">
@@ -24,7 +47,7 @@
     <p class="faint">Yürürlük tarihi: 5 Temmuz 2026 · "Hukuk Dili" iOS uygulaması (paket kimliği <code>com.hukukdili.app</code>) ve ana ekran widget'ı için geçerlidir.</p>
 
     <div class="card">
-      <p style="margin:0"><strong>Özet.</strong> Hukuk Dili hiçbir kişisel veri toplamaz, iletmez, satmaz
+      <p class="u-m0"><strong>Özet.</strong> Hukuk Dili hiçbir kişisel veri toplamaz, iletmez, satmaz
         veya paylaşmaz. Hesap yok, analitik yok, reklam yok, takip yok, üçüncü taraf SDK'sı yok.
         Uygulamada yaptığınız her şey cihazınızda kalır. Tek ağ etkinliği, isteğe bağlı "Hukuk Dili Pro"
         aboneliğinin fiyatlarını göstermek, satın almak veya geri yüklemek için Apple'ın kendi App Store
