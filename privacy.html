@@ -61,7 +61,9 @@
       elimizde erişilecek, düzeltilecek, taşınacak ya da silinecek bir kullanıcı verisi fiilen
       bulunmaz — bkz. Bölüm 9.</p>
 
-    <h2>2. Topladığımız veriler</h2>
+    <h2>2. Topladığımız veriler <span style="font-weight:400">(sürüm 1.0.1)</span></h2>
+    <p><strong>Bu bölüm App Store'daki mevcut sürüm olan 1.0.1 içindir.</strong> Sürüm 2 ve
+      sonrasında durum değişiyor — bkz. <a href="#surum2">Sürüm 2'den itibaren</a>.</p>
     <p><strong>Hiçbiri.</strong> Uygulamada özellikle:</p>
     <ul>
       <li>kullanıcı hesabı, kayıt veya giriş yoktur;</li>
@@ -72,7 +74,7 @@
       <li>kişilerinize, fotoğraflarınıza, konumunuza, mikrofon/kameranıza erişilmez.</li>
     </ul>
 
-    <h2>3. Yalnızca cihazınızda saklanan veriler</h2>
+    <h2>3. Yalnızca cihazınızda saklanan veriler <span style="font-weight:400">(sürüm 1.0.1)</span></h2>
     <p>Uygulamanın çalışması için küçük bir tercih kümesi, Apple'ın standart cihaz-içi depolamasında
       (uygulama sandbox'ı) tutulur. Bu verileri siz oluşturursunuz; cihazınızdan asla çıkmaz ve bizim
       erişimimize kapalıdır:</p>
@@ -113,6 +115,64 @@
       Okuma, çalışma, test, eşleştirme, favoriler ve widget tamamen çevrimdışı çalışır. Yasa maddesi
       kartları resmî mevzuat metnine dayanır; açıklamalar geliştirici tarafından özgün yazılmıştır ve
       hukuki danışmanlık niteliği taşımaz.</p>
+
+    <h2 id="surum2">6b. Sürüm 2'den itibaren — hesap ve senkronizasyon</h2>
+    <p>Sürüm 2, <strong>Apple ile Giriş</strong> ile bir hesap ve bizim işlettiğimiz bir sunucu
+      getiriyor. Bu bölüm, sürüm 2'yi kurduğunuz gün sizin için geçerli olur — öncesinde değil.
+      1.0.1 kullanıyorsanız yukarıdaki 2. ve 3. bölümler geçerlidir.</p>
+
+    <h3>Neden hesap var?</h3>
+    <p>İki sebep: ① ilerlemenizin telefonunuzu kaybettiğinizde ya da değiştirdiğinizde kaybolmaması,
+      ② Hukuk Dili Pro aboneliğinin tanınması (abonelik denetimi sunucuda yapılır).
+      <strong>Uygulamayı kullanmak için hesap zorunlu değildir:</strong> günün terimi, widget ve
+      hatırlatıcılar hesapsız çalışır.</p>
+
+    <h3>Topladığımız ve tuttuğumuz veriler</h3>
+    <p>Altı tür veri; hepsi hesabınıza bağlıdır ve <strong>hiçbiri takip için kullanılmaz</strong>:</p>
+    <ul>
+      <li><strong>E-posta</strong> — Apple'ın girişte ilettiği adres (Apple özel yönlendirme adresi
+        olabilir). Hesabınızı tanımlamak ve gerekirse size ulaşmak için kullanılır.</li>
+      <li><strong>Kullanıcı kimliği</strong> — sizin için ürettiğimiz hesap tanımlayıcısı ve
+        aboneliğinizi eşleştirmek için gereken tanımlayıcılar.</li>
+      <li><strong>Cihaz kimliği</strong> — giriş yaptığınız her cihaz için ürettiğimiz tanımlayıcı;
+        ilerlemenizin kendi cihazlarınız arasında taşınabilmesi için. Bu bir <em>reklam kimliği
+        değildir</em> ve reklam amacıyla asla paylaşılmaz.</li>
+      <li><strong>Ürün etkileşimi</strong> — hangi terimleri gördüğünüz, nasıl değerlendirdiğiniz,
+        test ve eşleştirme sonuçlarınız, çalışma oturumlarınız ve seri günleriniz. Aralıklı tekrarın
+        çalışmasını sağlayan veri budur.</li>
+      <li><strong>Sizin içeriğiniz</strong> — favorileriniz, koleksiyonlarınız (adlarını siz
+        yazarsınız), seçtiğiniz seviye ve ilgi alanlarınız.</li>
+      <li><strong>Satın alma geçmişi</strong> — abonelik durumu ve bu durumu oluşturan olaylar
+        (başlangıç, yenileme, bitiş, iptal). Yalnızca Pro'nun etkin olup olmadığına karar vermek için.</li>
+    </ul>
+    <p>App Store ürün sayfasındaki bildirimimiz de aynıdır: bu veri türleri <em>sizinle
+      ilişkilendirilir</em> ve <em>sizi takip etmek için kullanılmaz</em>. Konum, kişiler, fotoğraflar,
+      sağlık verisi, gezinme geçmişi veya reklam verisi toplanmaz. Hiçbir analitik, çökme raporlama
+      veya reklam SDK'sı kullanılmaz.</p>
+
+    <h3>Cihazınızda kalanlar</h3>
+    <p>Katalogun kendisi — her terim, tanım ve örnek — uygulamanın içinde gömülüdür; okuma, çalışma,
+      testler ve widget bağlantı olmadan çalışmayı sürdürür. Hatırlatıcı saatiniz ve görünüm
+      tercihiniz cihazınızda kalır.</p>
+    <p><strong>Sürüm 2'de ne değişti:</strong> 1.0.1'de favorileriniz, koleksiyonlarınız ve
+      ilerlemeniz yalnızca cihazda yaşıyordu ve cihazla birlikte kayboluyordu. Sürüm 2'den itibaren
+      bunlar hesabınıza bağlı olarak sunucumuzda da saklanır. Yalnızca cihazınızda kalmasını tercih
+      ediyorsanız giriş yapmayın.</p>
+
+    <h3>Kullandığımız altyapı</h3>
+    <ul>
+      <li><strong>Supabase</strong> (yönetilen PostgreSQL ve kimlik doğrulama) — hesap veritabanı ve
+        giriş oturumu.</li>
+      <li><strong>RevenueCat</strong> — abonelik olaylarını işler; yenileme ve geri yüklemede yetki
+        durumunun doğru kalmasını sağlar.</li>
+      <li><strong>Apple</strong> — Apple ile Giriş ve tüm ödeme işlemleri. Ödeme bilgilerinizi biz
+        hiçbir zaman görmeyiz.</li>
+    </ul>
+
+    <h3>Hesabınızı silmek</h3>
+    <p>Uygulama içinden <em>Profil → Hesabı sil</em> ile hesabınızı ve yukarıdaki verileri
+      silebilirsiniz. Silme işlemi sunucu tarafında da yürütülür. Apple'ın işlediği satın alma
+      kayıtları Apple'ın saklama koşullarına tabidir ve bizim silme kapsamımızda değildir.</p>
 
     <h2>7. E-posta yazışmaları</h2>
     <p>Yukarıdaki adresten bize yazarsanız, ilettiğiniz kişisel verileri (e-posta adresiniz ve
