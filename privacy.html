@@ -44,7 +44,7 @@
     </header>
 
     <h1>Gizlilik Politikası</h1>
-    <p class="faint">Yürürlük tarihi: 5 Temmuz 2026 · Son güncelleme: 28 Ağustos 2026 · "Hukuk Dili" iOS uygulaması (paket kimliği <code>com.hukukdili.app</code>) ve ana ekran widget'ı için geçerlidir.</p>
+    <p class="faint">Yürürlük tarihi: 5 Temmuz 2026 · Son güncelleme: 2 Eylül 2026 · "Hukuk Dili" iOS uygulaması (paket kimliği <code>com.hukukdili.app</code>) ve ana ekran widget'ı için geçerlidir.</p>
 
     <div class="card">
       <p class="u-m0"><strong>Özet (sürüm 2.0.0).</strong> Hukuk Dili'ni kullanmak için
@@ -129,8 +129,8 @@
     <h3>Neden hesap var?</h3>
     <p>İki sebep: ① ilerlemenizin telefonunuzu kaybettiğinizde ya da değiştirdiğinizde kaybolmaması,
       ② Hukuk Dili Pro aboneliğinin tanınması (abonelik denetimi sunucuda yapılır).
-      <strong>Uygulamayı kullanmak için hesap zorunlu değildir:</strong> günün terimi, widget ve
-      hatırlatıcılar hesapsız çalışır.</p>
+      <strong>Uygulamayı kullanmak için hesap zorunludur:</strong> tanıtımdaki üç karttan sonra günün
+      terimi, widget ve hatırlatıcılar hesabınızla çalışır.</p>
 
     <h3>Topladığımız ve tuttuğumuz veriler</h3>
     <p>Altı tür veri; hepsi hesabınıza bağlıdır ve <strong>hiçbiri takip için kullanılmaz</strong>:</p>
@@ -161,18 +161,32 @@
       tercihiniz cihazınızda kalır.</p>
     <p><strong>Sürüm 2'de ne değişti:</strong> 1.0.1'de favorileriniz, koleksiyonlarınız ve
       ilerlemeniz yalnızca cihazda yaşıyordu ve cihazla birlikte kayboluyordu. Sürüm 2'den itibaren
-      bunlar hesabınıza bağlı olarak sunucumuzda da saklanır. Yalnızca cihazınızda kalmasını tercih
-      ediyorsanız giriş yapmayın.</p>
+      bunlar hesabınıza bağlı olarak sunucumuzda da saklanır — uygulamayı silip yeniden kurduğunuzda ya
+      da yeni bir telefona geçtiğinizde geri gelmesinin sebebi budur. Sunucumuzda kayıt tutulmasını
+      istemiyorsanız hesabınızı uygulama içinden dilediğiniz an silebilirsiniz (Profil → Hesap); silme
+      kaydı ortadan kaldırır.</p>
 
-    <h3>Kullandığımız altyapı</h3>
+    <h3>Kullandığımız altyapı ve verinin tutulduğu yer</h3>
     <ul>
       <li><strong>Supabase</strong> (yönetilen PostgreSQL ve kimlik doğrulama) — hesap veritabanı ve
-        giriş oturumu.</li>
+        giriş oturumu. Projemiz Supabase'in <strong>eu-central-1</strong> bölgesinde —
+        <strong>Frankfurt, Almanya (AB)</strong> — barındırılır. Supabase'in Veri İşleme Eki (DPA) hizmet
+        koşullarının parçasıdır ve kullanımımıza uygulanır; AB dışına olası bir aktarım için AB Standart
+        Sözleşme Maddeleri'ne dayanır. Alt işleyici listesi
+        <a href="https://supabase.com/legal/customer-resources/subprocessor-list">supabase.com</a>'da
+        yayımlanır.</li>
       <li><strong>RevenueCat</strong> — abonelik olaylarını işler; yenileme ve geri yüklemede yetki
-        durumunun doğru kalmasını sağlar.</li>
+        durumunun doğru kalmasını sağlar. RevenueCat, Amazon Web Services ve Snowflake üzerinde
+        <strong>Amerika Birleşik Devletleri</strong>'nde çalışır; Apple'dan aldığı abonelik olayları
+        (ödeme bilgileriniz hiçbir zaman değil) orada işlenir. RevenueCat'in Veri İşleme Eki (DPA) hizmet
+        koşullarının parçasıdır ve kullanımımıza uygulanır; aktarım güvencesi AB Standart Sözleşme
+        Maddeleri'dir.</li>
       <li><strong>Apple</strong> — Apple ile Giriş ve tüm ödeme işlemleri. Ödeme bilgilerinizi biz
-        hiçbir zaman görmeyiz.</li>
+        hiçbir zaman görmeyiz; Apple'ın verinizle yaptıkları Apple'ın kendi gizlilik politikasına tabidir.</li>
     </ul>
+    <p>Bu bölüm, sağlayıcılarımızın veriyi nerede tuttuğunu ve hangi sözleşmelerin geçerli olduğunu
+      anlatır; 2 Eylül 2026'da sağlayıcıların yayımlanmış koşullarına ve proje ayarlarımıza göre
+      doğrulanmıştır. Sağlayıcı ya da bölge değişirse bu bölüm güncellenir.</p>
 
     <h3>Hesabınızı silmek</h3>
     <p>Uygulama içinden <em>Profil → Hesabı sil</em> ile hesabınızı ve yukarıdaki verileri
