@@ -1,33 +1,33 @@
 /* Hukuk Dili — açılış ve yasal sayfalar
-   Palet uygulamanın Theme.swift'inden gelir (sakin, premium, krem + bordo).
-   Kırmızı çizgiler (güvenlik turu 2026-08-19): 0 script, 0 görsel, 0 dış yazı tipi,
-   0 url(), 0 @import, 0 satır içi stil. Bu dosya tek kaynak ve aynı kökenli.
 
-   2026-09-12 tipografi turu: gövde serif kaldı, yapı ve künye sans'a taşındı;
-   başlık hiyerarşisi boyut+boşluk+çizgi ile kuruldu; ölçü 68 karaktere indi;
-   karanlık mod ve yazdırma stili eklendi. */
+   2026-09-12 gazete turu: krem zemin bırakıldı, beyaz kâğıt ve keskin kurala
+   geçildi. Yuvarlatma her yerde sıfır. Gövde ve manşet Georgia (Matthew Carter,
+   her platformda var, eski-stil rakamlı metin serifi); künye, bölüm etiketi ve
+   gezinme grotesk. Marka rengi yalnız bağlantı ve odak halkasında kaldı —
+   uygulamanın Theme.swift paletiyle bağ oradan sürüyor.
+
+   Kırmızı çizgiler (güvenlik turu 2026-08-19) korundu: 0 script, 0 görsel,
+   0 dış yazı tipi, 0 url(), 0 @import, 0 satır içi stil. CSP değişmedi. */
 
 :root {
-  --paper:       #ECE8DE;         /* sayfa zemini */
-  --surface:     #F5F2EB;         /* yükseltilmiş yüzey */
-  --ink:         #241F1B;         /* gövde metni */
-  --muted:       #605A4F;         /* ikincil metin */
-  --faint:       #726C5D;         /* künye ve alt bilgi */
-  --rule:        #D8D2C3;         /* ince çizgi */
-  --accent:      #8A5C64;         /* marka rengi — çizgi, işaret, odak */
-  --accent-btn:  #7E5058;         /* düğme zemini (kontrast için koyultuldu) */
-  --accent-ink:  #5C353E;         /* bağlantı ve h3 */
-  --accent-soft: #EDE6E8;         /* yumuşak aksan zemini */
-  --chip-bg:     #E3DFD3;         /* etiket zemini */
-  --chip-ink:    #565045;         /* etiket metni */
-  --btn-ink:     #FFFFFF;         /* düğme metni */
+  --paper:   #FFFFFF;          /* kâğıt */
+  --surface: #F4F2ED;          /* vurgulanmış şerit */
+  --ink:     #111111;          /* mürekkep */
+  --muted:   #5E5E5E;          /* künye ve etiket */
+  --faint:   #8E8E8E;          /* rakam ve madde işareti */
+  --rule:    #D4D4D4;          /* ince kural */
+  --accent:  #7A2E3A;          /* marka rengi — yalnız bağlantı ve odak */
 
 /* ── Tipografi ───────────────────────────────────────────────────────────────
-   Gövde serif kalır (uygulamanın karakteri), ama yapı ve künye sans'a geçer.
-   İkisinin ayrılması uzun hukuk metninde "okunan" ile "gezinilen"i ayırır.
+   Gazete düzeni. Gövde Georgia: Matthew Carter'ın ekran için tasarladığı,
+   her platformda bulunan ve eski-stil rakamları varsayılan olan bir metin
+   serifi — bir gazete sütununun istediği şey tam olarak bu.
+   Başlıklar da aynı seriften, ağır ve sıkı satır aralığıyla.
+   Künye, bölüm etiketi ve gezinme bir grotesk'e geçiyor; manşetle künyeyi
+   ayıran şey gazetede budur.
    Hiçbiri indirilmez — CSP `font-src 'self'` ve depoda yazı tipi dosyası yok. */
-  --f-serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, "Times New Roman", serif;
-  --f-sans:  system-ui, -apple-system, "Segoe UI Variable Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --f-serif: Georgia, "Times New Roman", Times, serif;
+  --f-sans:  "Helvetica Neue", Helvetica, Arial, "Segoe UI", sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -38,7 +38,7 @@ html {
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  * { transition: none !important; }
+  * { transition: none !important; animation: none !important; }
 }
 
 body {
@@ -47,161 +47,232 @@ body {
   color: var(--ink);
   font-family: var(--f-serif);
   font-size: 18px;
-  line-height: 1.72;
+  line-height: 1.68;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   font-kerning: normal;
 }
 
 .wrap {
-  max-width: 760px;
+  max-width: 720px;
   margin: 0 auto;
-  padding: 40px 24px 88px;
+  padding: 28px 24px 96px;
 }
 
-/* ── Başlık çubuğu ───────────────────────────────────────────────────────── */
+/* ── Künye çubuğu ────────────────────────────────────────────────────────────
+   Gazete mastheadi: üstte kalın kural, altında ince kural. Yuvarlatma yok. */
 
 header.site {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding-bottom: 22px;
-  margin-bottom: 44px;
+  margin: 0 0 38px;
+  padding: 18px 0 11px;
+  border-top: 4px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  position: relative;
+}
+header.site::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -4px;
   border-bottom: 1px solid var(--rule);
 }
 
 .brand {
   display: flex;
-  align-items: center;
-  gap: 12px;
+  align-items: baseline;
+  gap: 9px;
   text-decoration: none;
   color: var(--ink);
 }
 
 .brand .mark {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: var(--accent-soft);
-  border: 1px solid var(--rule);
-  color: var(--accent-ink);
-  display: grid;
-  place-items: center;
-  font-size: 17px;
+  font-size: 15px;
   line-height: 1;
+  filter: grayscale(1);
+  opacity: .8;
   flex: 0 0 auto;
 }
 
 .brand .name {
-  font-family: var(--f-sans);
-  font-size: 17px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
+  font-family: var(--f-serif);
+  font-size: 23px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1;
 }
 
 nav.site {
   font-family: var(--f-sans);
   display: flex;
-  gap: 22px;
+  gap: 20px;
 }
 nav.site a {
   color: var(--muted);
   text-decoration: none;
-  font-size: 14.5px;
-  padding-bottom: 3px;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  padding-bottom: 2px;
   border-bottom: 1px solid transparent;
   transition: color .15s, border-color .15s;
 }
 nav.site a:hover,
-nav.site a:focus-visible { color: var(--accent-ink); border-bottom-color: currentColor; }
+nav.site a:focus-visible { color: var(--ink); border-bottom-color: var(--ink); }
 
-/* ── Başlık hiyerarşisi ──────────────────────────────────────────────────────
-   Eski dosyada h2 22px, gövde 18px'ti — 4 piksel fark hiyerarşi kurmuyordu.
-   Ayrım artık üç kanaldan geliyor: boyut, üstündeki boşluk ve ince çizgi. */
+/* ── Manşet ve bölüm başlıkları ──────────────────────────────────────────────
+   Gazete manşeti: ağır serif, sıkı satır aralığı, negatif harf aralığı. */
 
 h1 {
-  font-size: clamp(30px, 4.6vw, 40px);
-  line-height: 1.16;
-  letter-spacing: -0.018em;
-  font-weight: 600;
-  margin: 0 0 14px;
+  font-size: clamp(34px, 5.6vw, 52px);
+  line-height: 1.06;
+  letter-spacing: -0.026em;
+  font-weight: 700;
+  margin: 30px 0 16px;
   text-wrap: balance;
 }
 
 h2 {
-  font-size: 25px;
-  line-height: 1.28;
+  font-size: 24px;
+  line-height: 1.24;
   letter-spacing: -0.012em;
-  font-weight: 600;
-  margin: 58px 0 12px;
-  padding-top: 22px;
-  border-top: 1px solid var(--rule);
+  font-weight: 700;
+  margin: 54px 0 13px;
+  padding-top: 13px;
+  border-top: 1px solid var(--ink);
   text-wrap: balance;
 }
-/* İlk h2 kendi çizgisini başlık çubuğunun çizgisiyle çakıştırmasın */
-h1 + h2, .doc-meta + h2, .toc + h2 { margin-top: 44px; }
+h1 + h2, .doc-meta + h2, .toc + h2 { margin-top: 40px; }
 
 h3 {
   font-size: 18.5px;
-  line-height: 1.4;
-  font-weight: 600;
-  color: var(--accent-ink);
-  margin: 34px 0 8px;
+  line-height: 1.38;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 32px 0 7px;
   text-wrap: balance;
 }
 
-p { margin: 0 0 15px; max-width: 68ch; }
-a { color: var(--accent-ink); text-underline-offset: 2px; }
-a:hover { text-decoration-thickness: 2px; }
+p { margin: 0 0 16px; max-width: 64ch; }
 
-strong, b { font-weight: 600; }
+a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+a:hover { color: var(--accent); text-decoration-thickness: 2px; }
 
-ul, ol { margin: 0 0 18px; padding-left: 1.35em; max-width: 68ch; }
-li { margin-bottom: 8px; }
-li::marker { color: var(--accent); }
+strong, b { font-weight: 700; }
+em, i { font-style: italic; }
 
-/* ── Belge künyesi ───────────────────────────────────────────────────────────
-   "Son güncelleme" bir gizlilik politikasında en çok aranan satırdır;
-   14 piksellik soluk bir nota gömülmesi yanlıştı. */
+ul, ol { margin: 0 0 20px; padding-left: 1.25em; max-width: 64ch; }
+li { margin-bottom: 9px; }
+li::marker { color: var(--faint); }
+
+code {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: .82em;
+  letter-spacing: -0.01em;
+}
+
+/* ── Künye satırı (dateline) ─────────────────────────────────────────────────
+   Gazetede tarih satırı küçük, aralıklı ve büyük harf grotesk'tir. */
 
 .doc-meta {
   font-family: var(--f-sans);
-  font-size: 13.5px;
-  line-height: 1.6;
+  font-size: 11.5px;
+  line-height: 1.75;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
   color: var(--muted);
-  margin: 0 0 34px;
-  padding: 12px 0 0;
+  margin: 0 0 32px;
+  padding: 9px 0 0;
   border-top: 1px solid var(--rule);
   max-width: none;
 }
-.doc-meta code {
+.doc-meta code { font-size: 11px; letter-spacing: 0; text-transform: none; }
+
+/* Kapsam satırı: künye büyük harf kalır, bu normal yazımda okunur kalsın. */
+.doc-scope {
+  font-family: var(--f-sans);
   font-size: 12.5px;
-  background: var(--accent-soft);
-  padding: 1px 5px;
-  border-radius: 3px;
+  line-height: 1.6;
+  color: var(--muted);
+  margin: -26px 0 32px;
+  max-width: 66ch;
+}
+.doc-scope code { font-size: 12px; }
+
+/* ── Özet / giriş paragrafı ──────────────────────────────────────────────────
+   Kutu değil. Gazetede öne çıkan metin, kenardaki kalın kuralla ve daha
+   büyük punto ile ayrılır. */
+
+.card {
+  background: none;
+  border: 0;
+  border-left: 4px solid var(--ink);
+  border-radius: 0;
+  padding: 3px 0 3px 22px;
+  margin: 26px 0 34px;
+}
+.card > :last-child { margin-bottom: 0; }
+.card p {
+  font-size: 19.5px;
+  line-height: 1.58;
+  max-width: 60ch;
 }
 
-/* ── İçindekiler ─────────────────────────────────────────────────────────────
-   On iki bölümlük bir belgede gezinme aracı olmaması en büyük eksikti.
-   Saf bağlantı listesi — script yok. */
+.lead {
+  font-size: 21px;
+  line-height: 1.5;
+  color: var(--ink);
+  margin: 0 0 28px;
+  max-width: 58ch;
+  text-wrap: pretty;
+}
+
+.note {
+  font-family: var(--f-sans);
+  font-size: 13.5px;
+  line-height: 1.62;
+  color: var(--muted);
+  background: var(--surface);
+  border: 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  border-radius: 0;
+  padding: 14px 0;
+  margin: 26px 0;
+  max-width: none;
+}
+.note > :last-child { margin-bottom: 0; }
+
+/* ── Bölüm dizini ────────────────────────────────────────────────────────────
+   Gazete indeksi: dolgusuz, çift kurallı, iki kolon, hizalı rakamlar. */
 
 .toc {
   font-family: var(--f-sans);
-  background: var(--surface);
-  border: 1px solid var(--rule);
-  border-radius: 10px;
-  padding: 20px 22px 18px;
-  margin: 0 0 40px;
+  background: none;
+  border: 0;
+  border-top: 3px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  border-radius: 0;
+  padding: 15px 0 13px;
+  margin: 0 0 38px;
 }
 .toc h2 {
   font-family: var(--f-sans);
-  font-size: 11.5px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--faint);
-  margin: 0 0 12px;
+  color: var(--muted);
+  margin: 0 0 13px;
   padding: 0;
   border: 0;
 }
@@ -210,188 +281,173 @@ li::marker { color: var(--accent); }
   margin: 0;
   padding: 0;
   columns: 2;
-  column-gap: 26px;
+  column-gap: 34px;
+  column-rule: 1px solid var(--rule);
   counter-reset: toc;
   max-width: none;
 }
 .toc li {
-  margin: 0 0 7px;
+  margin: 0 0 8px;
   break-inside: avoid;
   counter-increment: toc;
   display: flex;
-  gap: 9px;
-  font-size: 14.5px;
-  line-height: 1.45;
+  gap: 10px;
+  font-size: 13.5px;
+  line-height: 1.4;
 }
 .toc li::before {
   content: counter(toc);
   color: var(--faint);
   font-variant-numeric: tabular-nums;
-  font-size: 12.5px;
-  flex: 0 0 1.2em;
+  font-size: 11px;
+  font-weight: 600;
+  flex: 0 0 1.1em;
   text-align: right;
   padding-top: 2px;
 }
-.toc a { color: var(--muted); text-decoration: none; }
-.toc a:hover, .toc a:focus-visible { color: var(--accent-ink); text-decoration: underline; }
-@media (max-width: 560px) { .toc ol { columns: 1; } }
+.toc a { color: var(--ink); text-decoration: none; }
+.toc a:hover, .toc a:focus-visible { text-decoration: underline; text-decoration-thickness: 1px; }
+@media (max-width: 560px) { .toc ol { columns: 1; column-rule: 0; } }
 
-/* Paylaşılan bağlantıyla gelen bölüm görünür olsun */
-h2[id], h3[id] { scroll-margin-top: 24px; }
-:target { animation: vurgu 2.4s ease-out 1; }
-@keyframes vurgu {
-  from { background: var(--accent-soft); }
-  to   { background: transparent; }
-}
-@media (prefers-reduced-motion: reduce) { :target { animation: none; } }
+h2[id], h3[id] { scroll-margin-top: 22px; }
+:target { background: var(--surface); box-shadow: -10px 0 0 var(--surface), 10px 0 0 var(--surface); }
 
-/* ── Öne çıkan özet ──────────────────────────────────────────────────────────
-   Eskiden hem dolgulu hem kenarlıklı hem yuvarlak bir kutuydu; sayfada başka
-   hiçbir şey öyle olmadığı için "vurgu" değil "kutu" diye okunuyordu.
-   Artık kenardaki aksan çizgisi vurguyu taşıyor. */
-
-.card {
-  background: var(--surface);
-  border-left: 3px solid var(--accent);
-  border-radius: 0 8px 8px 0;
-  padding: 20px 24px;
-  margin: 26px 0 32px;
-}
-.card > :last-child { margin-bottom: 0; }
-.card p { max-width: 64ch; }
-
-.note {
-  font-family: var(--f-sans);
-  font-size: 14.5px;
-  line-height: 1.62;
-  color: var(--muted);
-  background: var(--accent-soft);
-  border-radius: 8px;
-  padding: 14px 18px;
-  margin: 22px 0;
-  max-width: none;
-}
-.note > :last-child { margin-bottom: 0; }
-
-.lead {
-  font-size: 20.5px;
-  line-height: 1.55;
-  color: var(--muted);
-  margin: 0 0 30px;
-  max-width: 62ch;
-  text-wrap: pretty;
-}
+/* ── Etiket ─────────────────────────────────────────────────────────────── */
 
 .chip {
   display: inline-block;
   font-family: var(--f-sans);
-  background: var(--chip-bg);
-  color: var(--chip-ink);
-  font-size: 12.5px;
-  font-weight: 500;
-  padding: 4px 12px;
-  border-radius: 999px;
-  letter-spacing: 0.01em;
+  background: none;
+  color: var(--muted);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  padding: 4px 0;
+  border-radius: 0;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
 }
 
 .muted { color: var(--muted); }
-.faint { color: var(--faint); font-size: 14px; }
+.faint {
+  color: var(--muted);
+  font-family: var(--f-sans);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
 
-/* ── Düğmeler ───────────────────────────────────────────────────────────── */
+/* ── Düğmeler ────────────────────────────────────────────────────────────────
+   Gazete ilanı gibi: dikdörtgen, kural çerçeveli, aralıklı büyük harf. */
 
 .btn {
   display: inline-block;
   font-family: var(--f-sans);
-  background: var(--accent-btn);
-  color: var(--btn-ink);
+  background: var(--ink);
+  color: var(--paper);
   text-decoration: none;
-  padding: 11px 22px;
-  border-radius: 9px;
-  font-size: 15.5px;
-  font-weight: 600;
-  margin: 6px 8px 6px 0;
-  transition: filter .15s;
+  padding: 12px 22px;
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  margin: 6px 10px 6px 0;
+  transition: background .15s, color .15s;
 }
-.btn:hover { filter: brightness(1.08); }
-.btn.secondary {
-  background: transparent;
-  color: var(--accent-ink);
-  border: 1px solid var(--rule);
-}
-.btn.secondary:hover { background: var(--accent-soft); filter: none; }
+.btn:hover { background: var(--accent); border-color: var(--accent); color: var(--paper); }
+.btn.secondary { background: none; color: var(--ink); }
+.btn.secondary:hover { background: var(--ink); color: var(--paper); }
 
-/* ── Özellik listesi (açılış sayfası) ───────────────────────────────────── */
+/* ── Özellik listesi (açılış sayfası) ────────────────────────────────────────
+   Gazete sütun listesi: hairline ayrımlı, etiket grotesk, açıklama serif. */
 
-.features { list-style: none; padding: 0; margin: 26px 0; max-width: none; }
+.features { list-style: none; padding: 0; margin: 30px 0; max-width: none; }
 .features li {
-  padding: 15px 0;
+  padding: 16px 0;
   margin: 0;
   border-bottom: 1px solid var(--rule);
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 4px;
 }
-.features li:last-child { border-bottom: 0; }
-.features b { font-family: var(--f-sans); font-size: 15.5px; font-weight: 600; }
-.features span { color: var(--muted); font-size: 16.5px; line-height: 1.6; }
+.features li:first-child { border-top: 1px solid var(--ink); }
+.features li:last-child { border-bottom: 1px solid var(--ink); }
+.features b {
+  font-family: var(--f-sans);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.features span { color: var(--ink); font-size: 17px; line-height: 1.6; max-width: 62ch; }
 
 hr.lang-divider {
-  margin: 64px 0 0;
+  margin: 68px 0 0;
   border: 0;
-  border-top: 1px solid var(--rule);
+  border-top: 3px solid var(--ink);
 }
 
 /* ── Alt bilgi ──────────────────────────────────────────────────────────── */
 
 footer.site {
   font-family: var(--f-sans);
-  margin-top: 68px;
-  padding-top: 22px;
-  border-top: 1px solid var(--rule);
-  color: var(--faint);
-  font-size: 13.5px;
+  margin-top: 66px;
+  padding-top: 16px;
+  border-top: 3px solid var(--ink);
+  color: var(--muted);
+  font-size: 11.5px;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 18px;
+  gap: 8px 20px;
   align-items: center;
   justify-content: space-between;
 }
 footer.site a { color: var(--muted); text-decoration: none; }
-footer.site a:hover { color: var(--accent-ink); text-decoration: underline; }
+footer.site a:hover { color: var(--ink); text-decoration: underline; }
 
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
 /* ── Küçük ekran ────────────────────────────────────────────────────────── */
 
 @media (max-width: 560px) {
-  body { font-size: 17px; line-height: 1.7; }
-  .wrap { padding: 26px 18px 64px; }
-  header.site { margin-bottom: 34px; }
-  nav.site { gap: 15px; }
-  nav.site a { font-size: 14px; }
-  h2 { font-size: 22px; margin-top: 46px; padding-top: 18px; }
+  body { font-size: 17px; line-height: 1.66; }
+  .wrap { padding: 18px 18px 68px; }
+  header.site { margin-bottom: 30px; padding-top: 14px; }
+  nav.site { gap: 13px; }
+  nav.site a { font-size: 10.5px; letter-spacing: 0.08em; }
+  .brand .name { font-size: 20px; }
+  h1 { margin-top: 24px; }
+  h2 { font-size: 21px; margin-top: 42px; }
   h3 { font-size: 17.5px; }
+  .card p { font-size: 18px; }
+  .card { padding-left: 16px; }
   .lead { font-size: 19px; }
-  .card { padding: 16px 18px; }
+  .doc-meta { letter-spacing: 0.045em; }
 }
 
 /* ── Yazdırma ────────────────────────────────────────────────────────────────
    Gizlilik politikası yazdırılan ve saklanan bir belgedir. */
 
 @media print {
-  body { background: #fff; color: #000; font-size: 11pt; line-height: 1.5; }
+  body { background: #fff; color: #000; font-size: 10.5pt; line-height: 1.45; }
   .wrap { max-width: none; padding: 0; }
   header.site nav, footer.site, .toc { display: none; }
-  header.site { border-bottom: 1pt solid #000; margin-bottom: 18pt; }
+  header.site { border-top: 2pt solid #000; border-bottom: 0.5pt solid #000; margin-bottom: 16pt; }
+  header.site::after { display: none; }
   .brand .mark { display: none; }
-  h1 { font-size: 20pt; }
-  h2 { font-size: 13pt; margin-top: 20pt; padding-top: 8pt; border-top: 0.5pt solid #999; break-after: avoid; }
-  h3 { font-size: 11.5pt; color: #000; break-after: avoid; }
+  h1 { font-size: 21pt; }
+  h2 { font-size: 12.5pt; margin-top: 18pt; padding-top: 6pt; border-top: 0.5pt solid #000; break-after: avoid; }
+  h3 { font-size: 11pt; break-after: avoid; }
   p, li { max-width: none; orphans: 3; widows: 3; }
-  .card { border-left: 2pt solid #000; background: none; }
-  .note { background: none; border: 0.5pt solid #999; }
-  a { color: #000; text-decoration: underline; }
-  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 9pt; color: #555; }
+  .card { border-left: 2pt solid #000; }
+  .card p { font-size: 11pt; }
+  .note { background: none; border-top: 0.5pt solid #999; border-bottom: 0.5pt solid #999; }
+  a { color: #000; }
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 8.5pt; color: #555; }
 }
 
 /* ── Güvenlik turu adım 9 (2026-08-19): satır içi `style="..."` yardımcıları ──
@@ -405,22 +461,16 @@ footer.site a:hover { color: var(--accent-ink); text-decoration: underline; }
 .u-mt40 { margin-top: 40px; }
 
 /* ── Karanlık mod ────────────────────────────────────────────────────────────
-   Gizlilik politikası gece, telefonda okunan bir belgedir. */
+   Gece baskısı: siyah kâğıt değil, koyu gri — kontrast kamaştırmasın. */
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --paper: #15120F;
-    --surface: #1E1916;
-    --ink: #EDE7DC;
-    --muted: #ADA595;
-    --faint: #8B8374;
-    --rule: #332C27;
-    --accent: #B9808A;
-    --accent-btn: #B9808A;
-    --accent-ink: #DCA9B1;
-    --accent-soft: #2B1F21;
-    --chip-bg: #2A241F;
-    --chip-ink: #B5AC9D;
-    --btn-ink: #1A1416;
+    --paper: #121212;
+    --surface: #1D1B19;
+    --ink: #EDEDED;
+    --muted: #A6A6A6;
+    --faint: #7C7C7C;
+    --rule: #2E2E2E;
+    --accent: #D28B96;
   }
 }
