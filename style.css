@@ -1,7 +1,9 @@
 /* Hukuk Dili — açılış ve yasal sayfalar
 
-   2026-09-12 gazete turu: krem zemin bırakıldı, beyaz kâğıt ve keskin kurala
-   geçildi. Yuvarlatma her yerde sıfır. Gövde ve manşet Georgia (Matthew Carter,
+   2026-09-12 gazete turu: keskin kural, ağır manşet, hairline ayrım.
+   Zemin uygulamanın Theme.swift kremi (#ECE8DE) — kurucu kararı: site
+   uygulamayla özdeş görünmeli. Mürekkep krem üzerinde otursun diye
+   nötr siyahtan sıcak siyaha çekildi. Yuvarlatma her yerde sıfır. Gövde ve manşet Georgia (Matthew Carter,
    her platformda var, eski-stil rakamlı metin serifi); künye, bölüm etiketi ve
    gezinme grotesk. Marka rengi yalnız bağlantı ve odak halkasında kaldı —
    uygulamanın Theme.swift paletiyle bağ oradan sürüyor.
@@ -10,12 +12,12 @@
    0 dış yazı tipi, 0 url(), 0 @import, 0 satır içi stil. CSP değişmedi. */
 
 :root {
-  --paper:   #FFFFFF;          /* kâğıt */
-  --surface: #F4F2ED;          /* vurgulanmış şerit */
-  --ink:     #111111;          /* mürekkep */
-  --muted:   #5E5E5E;          /* künye ve etiket */
-  --faint:   #8E8E8E;          /* rakam ve madde işareti */
-  --rule:    #D4D4D4;          /* ince kural */
+  --paper:   #ECE8DE;          /* kâğıt */
+  --surface: #F4F1EA;          /* vurgulanmış şerit */
+  --ink:     #1F1C16;          /* mürekkep */
+  --muted:   #5C574B;          /* künye ve etiket */
+  --faint:   #8B8577;          /* rakam ve madde işareti */
+  --rule:    #CEC8B9;          /* ince kural */
   --accent:  #7A2E3A;          /* marka rengi — yalnız bağlantı ve odak */
 
 /* ── Tipografi ───────────────────────────────────────────────────────────────
@@ -465,12 +467,12 @@ footer.site a:hover { color: var(--ink); text-decoration: underline; }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --paper: #121212;
-    --surface: #1D1B19;
-    --ink: #EDEDED;
-    --muted: #A6A6A6;
-    --faint: #7C7C7C;
-    --rule: #2E2E2E;
+    --paper: #161411;
+    --surface: #201D18;
+    --ink: #EDE8DC;
+    --muted: #A8A194;
+    --faint: #7E7768;
+    --rule: #332E27;
     --accent: #D28B96;
   }
 }
