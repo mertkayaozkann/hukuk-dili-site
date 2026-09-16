@@ -27,7 +27,7 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' data:; font-src 'self'; base-uri 'none'; form-action 'none'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>Gizlilik Politikası — Hukuk Dili</title>
-  <meta name="description" content="Hukuk Dili hiçbir kişisel veri toplamaz: hesap yoktur, sunucumuz yoktur, hiçbir şey cihazınızdan çıkmaz. Takip, reklam ve analitik yoktur. KVKK bilgilendirmesi.">
+  <meta name="description" content="Hukuk Dili hiçbir kişisel veri toplamaz: hesap yoktur, sunucumuz yoktur; ilerlemeniz cihazınızda ve kendi iCloud hesabınızda kalır, bize hiçbir şey çıkmaz. Takip, reklam ve analitik yoktur. KVKK bilgilendirmesi.">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -50,7 +50,7 @@
     <div class="card">
       <p class="u-m0"><strong>Özet.</strong> Hukuk Dili <strong>hiçbir kişisel veri toplamaz.</strong>
         Kullanıcı hesabı, kayıt ve giriş yoktur. Bize ait bir sunucu yoktur; ilerlemeniz,
-        favorileriniz ve koleksiyonlarınız yalnızca cihazınızda saklanır ve hiçbir yere yüklenmez.
+        favorileriniz ve koleksiyonlarınız cihazınızda ve iCloud açıksa kendi iCloud hesabınızda saklanır; bizim sunucumuza hiçbir zaman gitmez.
         Analitik, çökme raporlama, reklam ve takip teknolojisi kullanılmaz; hiçbir üçüncü taraf
         SDK'sı bulunmaz. Aboneliğiniz Apple tarafından yönetilir, satın alma bilgilerinize
         erişimimiz yoktur.</p>
@@ -92,9 +92,9 @@
       <li>kişilerinize, fotoğraflarınıza, konumunuza, mikrofon/kameranıza erişilmez.</li>
     </ul>
 
-    <h2 id="b3">3. Yalnızca cihazınızda saklanan veriler</h2>
+    <h2 id="b3">3. Cihazınızda ve kendi iCloud'unuzda saklanan veriler</h2>
     <p>Uygulamanın çalışması için küçük bir tercih kümesi, Apple'ın standart cihaz-içi depolamasında
-      (uygulama sandbox'ı) tutulur. Bu verileri siz oluşturursunuz; cihazınızdan asla çıkmaz ve bizim
+      (uygulama sandbox'ı) tutulur. Bu verileri siz oluşturursunuz ve bizim
       erişimimize kapalıdır:</p>
     <ul>
       <li>tanıtım sırasında isteğe bağlı girdiğiniz ad (yalnızca uygulama içinde size hitap etmek için; boş bırakabilirsiniz);</li>
@@ -103,9 +103,18 @@
       <li>günlük ilerlemeniz (hangi terimleri gördüğünüz) ve seri sayacınız;</li>
       <li>hatırlatıcı ayarları ve tanıtım (onboarding) durumu.</li>
     </ul>
-    <p>Uygulama ile widget bu tercihleri, yine tamamen cihazınızda kalan bir Apple "App Group"
-      kapsayıcısı üzerinden paylaşır. Uygulamayı silmek bu verilerin tamamını kalıcı olarak siler.
-      Yapılandırdığınız iOS yedeklemeleri (iCloud/bilgisayar) Apple'ın koşullarına tabidir, bize değil.</p>
+    <p>Uygulama ile widget bu tercihleri, cihazınızda kalan bir Apple "App Group" kapsayıcısı üzerinden
+      paylaşır.</p>
+    <p><strong>iCloud eşitlemesi (1.0.2 sürümünden itibaren).</strong> Cihazınızda uygulama için iCloud
+      açıksa aynı tercihler — ilerlemeniz, seriniz, favorileriniz, koleksiyonlarınız, seviyeniz ve ilgi
+      alanlarınız — ayrıca <strong>kendi iCloud hesabınıza</strong> yazılır (Apple'ın iCloud anahtar-değer
+      deposu, <code>NSUbiquitousKeyValueStore</code>). Uygulamayı silip yeniden kurduğunuzda ya da aynı
+      Apple&nbsp;Hesabıyla yeni bir iPhone'a geçtiğinizde ilerlemenizi geri getiren budur. Veri sizin
+      hesabınız altında Apple'ın iCloud'una gider ve Apple'ın gizlilik koşullarına tabidir;
+      <strong>bizim sunucumuz yoktur, hiçbir şey bize ulaşmaz ve bu veriyi okuyamayız</strong>. Hatırlatıcı
+      ayarları yalnızca cihazda kalır. Bunu istediğiniz an <em>iOS Ayarları → adınız → iCloud</em>'dan
+      kapatabilir, uygulamanın iCloud verisini oradan silebilirsiniz. Uygulamayı silmek o cihazda
+      sakladıklarını siler; iCloud eşitlemesi açıksa iCloud hesabınızdaki kopya siz silene kadar kalır.</p>
 
     <h2 id="b4">4. Uygulama içi satın alma ve abonelik (Apple)</h2>
     <p>Hukuk Dili, isteğe bağlı ve otomatik yenilenen bir abonelik sunar: "Hukuk Dili Pro" (aylık veya
@@ -119,8 +128,8 @@
         <a href="https://www.apple.com/legal/internet-services/itunes/" target="_blank" rel="noopener">Apple Medya Hizmetleri koşulları</a> ve
         <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple Gizlilik Politikası</a> uyarınca yürütülür.</li>
     </ul>
-    <p>Cihazınız ile App Store arasındaki bu iletişim, uygulamanın tek ağ etkinliğidir ve iOS
-      tarafından başlatılır/korunur.</p>
+    <p>Cihazınız ile App Store arasındaki bu iletişim ile (iCloud açıksa) Apple'ın iCloud eşitlemesi,
+      uygulamanın tek ağ etkinliğidir; ikisi de iOS tarafından başlatılır ve korunur.</p>
 
     <h2 id="b5">5. Bildirimler</h2>
     <p>Günlük hatırlatıcıyı açarsanız bildirimler iOS tarafından <strong>cihazınızda yerel olarak</strong>
